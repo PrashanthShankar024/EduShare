@@ -1,0 +1,1633 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EduShare | Learn • Share • Grow</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8faff;
+            color: #172554;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 72px;
+            padding: 0 7%;
+            background: rgba(255, 255, 255, 0.95);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            text-decoration: none;
+
+            font-size: 24px;
+            font-weight: 800;
+
+            color: #172554;
+        }
+
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+
+        .logo span {
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+
+        .nav-login {
+            padding: 10px 20px;
+
+            border: 1px solid #c7d2fe;
+            border-radius: 10px;
+
+            color: #4338ca !important;
+        }
+
+
+        .nav-login:hover {
+            background: #eef2ff;
+        }
+
+
+        .nav-start {
+            padding: 11px 20px;
+
+            color: white !important;
+
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+
+            padding: 80px 7%;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    #e0e7ff 0,
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 30%,
+                    #ede9fe 0,
+                    transparent 30%
+                ),
+                #f8faff;
+        }
+
+
+        .hero-container {
+            width: 100%;
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            align-items: center;
+
+            gap: 60px;
+        }
+
+
+        .hero-content {
+            animation: fadeUp 0.8s ease;
+        }
+
+
+        .badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 15px;
+
+            margin-bottom: 20px;
+
+            border-radius: 30px;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 68px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            color: #172554;
+
+            margin-bottom: 25px;
+        }
+
+
+        .gradient-text {
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed,
+                #9333ea
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero-description {
+            max-width: 600px;
+
+            color: #64748b;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 25px;
+        }
+
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 14px 22px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        .primary-btn {
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+            box-shadow:
+                0 10px 25px
+                rgba(79, 70, 229, 0.25);
+        }
+
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(79, 70, 229, 0.35);
+        }
+
+
+        .secondary-btn {
+            color: #4338ca;
+
+            background: white;
+
+            border: 1px solid #c7d2fe;
+        }
+
+
+        .secondary-btn:hover {
+            background: #eef2ff;
+
+            transform: translateY(-3px);
+        }
+
+
+        .trust-row {
+            display: flex;
+
+            gap: 22px;
+
+            flex-wrap: wrap;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        .trust-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+        }
+
+
+        .check {
+            color: #10b981;
+
+            font-weight: 800;
+        }
+
+
+        /* Hero Image */
+
+        .hero-image-wrapper {
+            position: relative;
+
+            animation: floatImage 4s ease-in-out infinite;
+        }
+
+
+        .hero-image {
+            width: 100%;
+
+            max-width: 600px;
+
+            display: block;
+
+            margin: auto;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(79, 70, 229, 0.18);
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: -50px auto 80px;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .stat-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(15, 23, 42, 0.08);
+
+            border: 1px solid #eef2ff;
+
+            transition: 0.3s;
+        }
+
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .stat-icon {
+            width: 58px;
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #eef2ff;
+
+            font-size: 28px;
+        }
+
+
+        .stat-number {
+            font-size: 28px;
+
+            font-weight: 800;
+
+            color: #172554;
+        }
+
+
+        .stat-label {
+            font-size: 13px;
+
+            color: #64748b;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: 90px auto;
+        }
+
+
+        .section-header {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+
+        .section-header h2 {
+            font-size: 36px;
+
+            color: #172554;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-header h2 span {
+            color: #6366f1;
+        }
+
+
+        .section-header p {
+            color: #64748b;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .feature-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid #eef2ff;
+
+            transition: 0.3s;
+        }
+
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 20px 40px
+                rgba(15, 23, 42, 0.08);
+        }
+
+
+        .feature-icon {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #eef2ff;
+
+            font-size: 27px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .feature-card h3 {
+            color: #172554;
+
+            margin-bottom: 10px;
+
+            font-size: 18px;
+        }
+
+
+        .feature-card p {
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           LATEST MATERIALS
+        ========================= */
+
+        .materials-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .material-card {
+            background: white;
+
+            padding: 24px;
+
+            border-radius: 18px;
+
+            border: 1px solid #eef2ff;
+
+            transition: 0.3s;
+        }
+
+
+        .material-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 40px
+                rgba(15, 23, 42, 0.08);
+        }
+
+
+        .material-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #eef2ff;
+
+            font-size: 25px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .material-card h3 {
+            color: #172554;
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .material-card p {
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+
+        .material-info {
+            font-size: 12px;
+
+            color: #64748b;
+
+            line-height: 1.8;
+
+            margin-bottom: 18px;
+        }
+
+
+        .view-btn {
+            display: block;
+
+            text-align: center;
+
+            padding: 10px;
+
+            background: #eef2ff;
+
+            color: #4338ca;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        .view-btn:hover {
+            background: #4f46e5;
+
+            color: white;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: 100px auto;
+
+            padding: 55px 45px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        .cta h2 {
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .cta p {
+            color: #ddd6fe;
+
+            font-size: 14px;
+        }
+
+
+        .cta .btn {
+            background: white;
+
+            color: #4338ca;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0f172a;
+
+            color: #94a3b8;
+
+            padding: 45px 7%;
+
+            text-align: center;
+        }
+
+
+        .footer-logo {
+            color: white;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .footer-logo span {
+            color: #818cf8;
+        }
+
+
+        footer p {
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @keyframes floatImage {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .hero-buttons,
+            .trust-row {
+                justify-content: center;
+            }
+
+
+            .hero-image {
+                max-width: 650px;
+            }
+
+
+            .features-grid,
+            .materials-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .cta {
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: auto;
+
+                padding: 15px 5%;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .nav-links {
+                gap: 14px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .hero {
+                padding: 55px 5%;
+            }
+
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+
+            .stats {
+                margin-top: 30px;
+            }
+
+
+            .stats-grid,
+            .features-grid,
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .section {
+                width: 94%;
+
+                margin: 70px auto;
+            }
+
+
+            .section-header h2 {
+                font-size: 29px;
+            }
+
+
+            .cta {
+                width: 94%;
+
+                padding: 40px 25px;
+            }
+
+
+            .cta h2 {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a href="{% url 'home' %}" class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        Edu<span>Share</span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+        <a href="{% url 'material_list' %}">
+            Materials
+        </a>
+
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'profile' %}">
+                Profile
+            </a>
+
+            <a href="{% url 'bookmarks' %}">
+                ⭐ Bookmarks
+            </a>
+
+            <a href="{% url 'logout' %}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'login' %}" class="nav-login">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}" class="nav-start">
+                Get Started
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🎓 Learn
+                •
+                Share
+                •
+                Grow
+            </div>
+
+
+            <h1>
+
+                Knowledge shared today
+                builds a
+
+                <span class="gradient-text">
+                    brighter tomorrow.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                EduShare is a collaborative platform where
+                students can upload, discover, share and
+                review study materials.
+
+                Together, we make learning easier for everyone.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="{% url 'material_list' %}"
+                    class="btn primary-btn"
+                >
+                    📚 Explore Materials →
+                </a>
+
+
+                {% if user.is_authenticated %}
+
+                    <a
+                        href="{% url 'upload_material' %}"
+                        class="btn secondary-btn"
+                    >
+                        ⬆ Upload Resource
+                    </a>
+
+                {% else %}
+
+                    <a
+                        href="{% url 'register' %}"
+                        class="btn secondary-btn"
+                    >
+                        🚀 Join EduShare
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="trust-row">
+
+                <div class="trust-item">
+                    <span class="check">✓</span>
+                    Free to use
+                </div>
+
+                <div class="trust-item">
+                    <span class="check">✓</span>
+                    Student community
+                </div>
+
+                <div class="trust-item">
+                    <span class="check">✓</span>
+                    Quality resources
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HERO IMAGE -->
+
+        <div class="hero-image-wrapper">
+
+            <img
+                src="{% static 'core/images/hero-education.png' %}"
+                alt="Students learning and sharing educational resources"
+                class="hero-image"
+            >
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATISTICS
+========================= -->
+
+<section class="stats">
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📚
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    {{ total_resources }}
+                </div>
+
+                <div class="stat-label">
+                    Resources Shared
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    {{ total_users }}
+                </div>
+
+                <div class="stat-label">
+                    Registered Students
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⭐
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    {{ total_reviews }}
+                </div>
+
+                <div class="stat-label">
+                    Reviews
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+            Why Use
+            <span>EduShare?</span>
+        </h2>
+
+        <p>
+            Everything you need to share and discover
+            useful study resources.
+        </p>
+
+    </div>
+
+
+    <div class="features-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📤
+            </div>
+
+            <h3>
+                Share Resources
+            </h3>
+
+            <p>
+                Upload notes, documents, presentations,
+                videos, images and other educational
+                resources.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Find Materials
+            </h3>
+
+            <p>
+                Search and filter educational resources
+                by subject, semester and resource type.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Rate & Review
+            </h3>
+
+            <p>
+                Rate useful resources and share your
+                experience through reviews.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔖
+            </div>
+
+            <h3>
+                Save Favorites
+            </h3>
+
+            <p>
+                Bookmark useful resources and easily
+                access them later.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔐
+            </div>
+
+            <h3>
+                Secure Accounts
+            </h3>
+
+            <p>
+                Each student gets a personal account
+                to manage their resources.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>
+                Responsive Design
+            </h3>
+
+            <p>
+                Access EduShare comfortably from
+                desktops, tablets and mobile devices.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LATEST MATERIALS
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+            🔥 Latest Resources
+        </h2>
+
+        <p>
+            Recently uploaded study materials from
+            the EduShare community.
+        </p>
+
+    </div>
+
+
+    {% if latest_materials %}
+
+
+        <div class="materials-grid">
+
+
+            {% for material in latest_materials %}
+
+
+                <div class="material-card">
+
+
+                    <div class="material-icon">
+
+                        {% if material.resource_type == 'pdf' %}
+                            📕
+                        {% elif material.resource_type == 'document' %}
+                            📄
+                        {% elif material.resource_type == 'presentation' %}
+                            📊
+                        {% elif material.resource_type == 'spreadsheet' %}
+                            📗
+                        {% elif material.resource_type == 'image' %}
+                            🖼
+                        {% elif material.resource_type == 'video' %}
+                            🎥
+                        {% elif material.resource_type == 'archive' %}
+                            📦
+                        {% else %}
+                            📁
+                        {% endif %}
+
+                    </div>
+
+
+                    <h3>
+                        {{ material.title }}
+                    </h3>
+
+
+                    <p>
+                        {{ material.description|truncatechars:100 }}
+                    </p>
+
+
+                    <div class="material-info">
+
+                        📚
+                        {{ material.subject }}
+
+                        <br>
+
+                        🎓
+                        {{ material.get_semester_display }}
+
+                        <br>
+
+                        📁
+                        {{ material.get_resource_type_display }}
+
+                        <br>
+
+                        👤
+                        {{ material.uploaded_by.username }}
+
+                    </div>
+
+
+                    <a
+                        href="{% url 'material_detail' material.pk %}"
+                        class="view-btn"
+                    >
+                        View Resource →
+                    </a>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+        <div style="
+            text-align:center;
+            margin-top:35px;
+        ">
+
+            <a
+                href="{% url 'material_list' %}"
+                class="btn primary-btn"
+            >
+                View All Materials →
+            </a>
+
+        </div>
+
+
+    {% else %}
+
+
+        <div style="
+            background:white;
+            padding:45px;
+            border-radius:18px;
+            text-align:center;
+        ">
+
+            <div style="
+                font-size:45px;
+                margin-bottom:15px;
+            ">
+                📚
+            </div>
+
+
+            <h3>
+                No resources available yet
+            </h3>
+
+
+            <p style="
+                color:#64748b;
+                margin:10px 0 20px;
+            ">
+                Be the first student to share a resource!
+            </p>
+
+
+            {% if user.is_authenticated %}
+
+                <a
+                    href="{% url 'upload_material' %}"
+                    class="btn primary-btn"
+                >
+                    Upload Resource
+                </a>
+
+            {% else %}
+
+                <a
+                    href="{% url 'register' %}"
+                    class="btn primary-btn"
+                >
+                    Create Account
+                </a>
+
+            {% endif %}
+
+        </div>
+
+
+    {% endif %}
+
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <div>
+
+        <h2>
+            Ready to Share Your Knowledge?
+        </h2>
+
+        <p>
+            Upload your study materials and help
+            other students learn.
+        </p>
+
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+        <a
+            href="{% url 'upload_material' %}"
+            class="btn"
+        >
+            ⬆ Upload Resource
+        </a>
+
+    {% else %}
+
+        <a
+            href="{% url 'register' %}"
+            class="btn"
+        >
+            🚀 Join EduShare
+        </a>
+
+    {% endif %}
+
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🎓 Edu<span>Share</span>
+    </div>
+
+    <p>
+        Built for students, by students. 🎓
+    </p>
+
+    <p style="margin-top:10px;">
+        © 2026 EduShare. All rights reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

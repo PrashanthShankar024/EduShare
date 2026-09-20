@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Resource | EduShare</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+
+            color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+        form p {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .back {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #2563eb;
+
+            text-decoration: none;
+        }
+
+        .help {
+            background: #eff6ff;
+
+            padding: 12px;
+
+            border-radius: 6px;
+
+            margin-bottom: 20px;
+
+            color: #1e40af;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .errorlist {
+            color: #dc2626;
+
+            margin-bottom: 5px;
+
+            list-style: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>
+            Upload Resource
+        </h1>
+
+        <p class="subtitle">
+            Share useful educational materials
+            with other students.
+        </p>
+
+
+        <div class="help">
+
+            <strong>Supported formats:</strong>
+
+            PDF, DOC, DOCX, PPT, PPTX,
+            XLS, XLSX, JPG, PNG, WEBP,
+            MP4, WEBM, MOV and ZIP.
+
+            <br>
+
+            <strong>Maximum file size:</strong>
+            100 MB.
+
+        </div>
+
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                Upload Resource
+            </button>
+
+        </form>
+
+
+        <a href="{% url 'home' %}"
+           class="back">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

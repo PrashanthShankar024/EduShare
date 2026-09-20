@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Materials | EduShare</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: #1e293b;
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #c4b5fd;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 34px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        /* Search Section */
+
+        .filter-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+            margin-bottom: 35px;
+        }
+
+        .filter-form {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 12px;
+        }
+
+        .filter-form input,
+        .filter-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+        }
+
+        .filter-form input:focus,
+        .filter-form select:focus {
+            outline: none;
+            border-color: #7c3aed;
+        }
+
+        .search-btn {
+            padding: 12px 20px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .search-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Upload Button */
+
+        .top-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .results-text {
+            color: #64748b;
+        }
+
+        .upload-btn {
+            background: #16a34a;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .upload-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Materials Grid */
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Material Card */
+
+        .material-card {
+            background: white;
+            border-radius: 15px;
+            padding: 24px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .material-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Resource Icon */
+
+        .resource-icon {
+            width: 55px;
+            height: 55px;
+            background: #ede9fe;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .material-title {
+            font-size: 21px;
+            color: #1e293b;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+
+        .description {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Information */
+
+        .material-info {
+            margin-bottom: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .info-label {
+            color: #64748b;
+        }
+
+        .info-value {
+            color: #1e293b;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Rating */
+
+        .rating {
+            margin: 12px 0;
+            padding: 9px 12px;
+            background: #fffbeb;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #f59e0b;
+            display: inline-block;
+        }
+
+        /* View Button */
+
+        .view-btn {
+            display: block;
+            text-align: center;
+            background: #2563eb;
+            color: white;
+            padding: 11px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: auto;
+        }
+
+        .view-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Empty State */
+
+        .empty-state {
+            background: white;
+            padding: 50px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .empty-state h2 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .clear-btn {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 1000px) {
+
+            .materials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-form {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .filter-form {
+                grid-template-columns: 1fr;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            EduShare
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'material_list' %}">
+                Materials
+            </a>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'dashboard' %}">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'bookmarks' %}">
+                    ⭐ Bookmarks
+                </a>
+
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main -->
+
+    <div class="container">
+
+        <h1 class="page-title">
+            📚 Study Materials
+        </h1>
+
+        <p class="page-subtitle">
+            Explore and share educational resources with other students.
+        </p>
+
+
+        <!-- Search and Filters -->
+
+        <div class="filter-box">
+
+            <form
+                method="GET"
+                action="{% url 'material_list' %}"
+                class="filter-form"
+            >
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="🔎 Search by title, subject or description..."
+                    value="{{ search_query }}"
+                >
+
+
+                <select name="semester">
+
+                    <option value="">
+                        All Semesters
+                    </option>
+
+                    <option
+                        value="1"
+                        {% if selected_semester == '1' %}selected{% endif %}
+                    >
+                        1st Semester
+                    </option>
+
+                    <option
+                        value="2"
+                        {% if selected_semester == '2' %}selected{% endif %}
+                    >
+                        2nd Semester
+                    </option>
+
+                    <option
+                        value="3"
+                        {% if selected_semester == '3' %}selected{% endif %}
+                    >
+                        3rd Semester
+                    </option>
+
+                    <option
+                        value="4"
+                        {% if selected_semester == '4' %}selected{% endif %}
+                    >
+                        4th Semester
+                    </option>
+
+                    <option
+                        value="5"
+                        {% if selected_semester == '5' %}selected{% endif %}
+                    >
+                        5th Semester
+                    </option>
+
+                    <option
+                        value="6"
+                        {% if selected_semester == '6' %}selected{% endif %}
+                    >
+                        6th Semester
+                    </option>
+
+                    <option
+                        value="7"
+                        {% if selected_semester == '7' %}selected{% endif %}
+                    >
+                        7th Semester
+                    </option>
+
+                    <option
+                        value="8"
+                        {% if selected_semester == '8' %}selected{% endif %}
+                    >
+                        8th Semester
+                    </option>
+
+                </select>
+
+
+                <select name="resource_type">
+
+                    <option value="">
+                        All Resource Types
+                    </option>
+
+                    <option
+                        value="pdf"
+                        {% if selected_resource_type == 'pdf' %}selected{% endif %}
+                    >
+                        📕 PDF
+                    </option>
+
+                    <option
+                        value="document"
+                        {% if selected_resource_type == 'document' %}selected{% endif %}
+                    >
+                        📄 Document
+                    </option>
+
+                    <option
+                        value="presentation"
+                        {% if selected_resource_type == 'presentation' %}selected{% endif %}
+                    >
+                        📊 Presentation
+                    </option>
+
+                    <option
+                        value="spreadsheet"
+                        {% if selected_resource_type == 'spreadsheet' %}selected{% endif %}
+                    >
+                        📗 Spreadsheet
+                    </option>
+
+                    <option
+                        value="image"
+                        {% if selected_resource_type == 'image' %}selected{% endif %}
+                    >
+                        🖼 Image
+                    </option>
+
+                    <option
+                        value="video"
+                        {% if selected_resource_type == 'video' %}selected{% endif %}
+                    >
+                        🎥 Video
+                    </option>
+
+                    <option
+                        value="archive"
+                        {% if selected_resource_type == 'archive' %}selected{% endif %}
+                    >
+                        📦 Archive
+                    </option>
+
+                    <option
+                        value="other"
+                        {% if selected_resource_type == 'other' %}selected{% endif %}
+                    >
+                        📁 Other
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="search-btn"
+                >
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Top Actions -->
+
+        <div class="top-actions">
+
+            <div class="results-text">
+
+                {% if materials %}
+
+                    Showing
+                    <strong>{{ materials|length }}</strong>
+                    resource{{ materials|length|pluralize }}
+
+                {% else %}
+
+                    No resources found.
+
+                {% endif %}
+
+            </div>
+
+
+            {% if user.is_authenticated %}
+
+                <a
+                    href="{% url 'upload_material' %}"
+                    class="upload-btn"
+                >
+                    ➕ Upload Resource
+                </a>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Materials -->
+
+        {% if materials %}
+
+            <div class="materials-grid">
+
+                {% for material in materials %}
+
+                    <div class="material-card">
+
+
+                        <!-- Resource Icon -->
+
+                        <div class="resource-icon">
+
+                            {% if material.resource_type == 'pdf' %}
+                                📕
+                            {% elif material.resource_type == 'document' %}
+                                📄
+                            {% elif material.resource_type == 'presentation' %}
+                                📊
+                            {% elif material.resource_type == 'spreadsheet' %}
+                                📗
+                            {% elif material.resource_type == 'image' %}
+                                🖼
+                            {% elif material.resource_type == 'video' %}
+                                🎥
+                            {% elif material.resource_type == 'archive' %}
+                                📦
+                            {% else %}
+                                📁
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- Title -->
+
+                        <h2 class="material-title">
+                            {{ material.title }}
+                        </h2>
+
+
+                        <!-- Description -->
+
+                        <p class="description">
+                            {{ material.description }}
+                        </p>
+
+
+                        <!-- Information -->
+
+                        <div class="material-info">
+
+                            <div class="info-row">
+
+                                <span class="info-label">
+                                    Subject
+                                </span>
+
+                                <span class="info-value">
+                                    {{ material.subject }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="info-label">
+                                    Semester
+                                </span>
+
+                                <span class="info-value">
+                                    {{ material.get_semester_display }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="info-label">
+                                    Type
+                                </span>
+
+                                <span class="info-value">
+                                    {{ material.get_resource_type_display }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="info-label">
+                                    Uploaded By
+                                </span>
+
+                                <span class="info-value">
+                                    {{ material.uploaded_by.username }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="info-label">
+                                    Date
+                                </span>
+
+                                <span class="info-value">
+                                    {{ material.uploaded_at|date:"M d, Y" }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Average Rating -->
+
+                        {% if material.average_rating %}
+
+                            <div class="rating">
+
+                                ⭐
+                                {{ material.average_rating|floatformat:1 }}
+                                / 5
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="rating">
+
+                                ⭐ No ratings yet
+
+                            </div>
+
+                        {% endif %}
+
+
+                        <!-- View Details -->
+
+                        <a
+                            href="{% url 'material_detail' material.pk %}"
+                            class="view-btn"
+                        >
+                            👁 View Details
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        {% else %}
+
+            <!-- Empty State -->
+
+            <div class="empty-state">
+
+                <h2>
+                    😕 No Materials Found
+                </h2>
+
+                <p>
+                    Try changing your search or filter options.
+                </p>
+
+                <a
+                    href="{% url 'material_list' %}"
+                    class="clear-btn"
+                >
+                    Clear Filters
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

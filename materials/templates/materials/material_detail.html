@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ material.title }} | EduShare</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: #1e293b;
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #c4b5fd;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* Material Card */
+
+        .material-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .material-title {
+            font-size: 32px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* Information */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .info-box strong {
+            display: block;
+            color: #475569;
+            margin-bottom: 5px;
+        }
+
+        .info-box span {
+            color: #1e293b;
+        }
+
+        /* Buttons */
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .view-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .download-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .edit-btn {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .bookmark-btn {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Reviews */
+
+        .reviews-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .reviews-section h2 {
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .review-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .review-btn {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .review-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Review Cards */
+
+        .review-card {
+            background: white;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .review-header strong {
+            color: #1e293b;
+        }
+
+        .review-rating {
+            color: #f59e0b;
+        }
+
+        .review-card p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .review-card small {
+            color: #6b7280;
+        }
+
+        .delete-review-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .delete-review-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Login message */
+
+        .login-message {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .login-message a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Back Button */
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .material-card {
+                padding: 22px;
+            }
+
+            .material-title {
+                font-size: 25px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+
+        .average-rating {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.average-rating strong {
+    color: #f59e0b;
+    font-size: 20px;
+}
+
+.average-rating span {
+    color: #64748b;
+    margin-left: 10px;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            EduShare
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'material_list' %}">
+                Materials
+            </a>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'dashboard' %}">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'bookmarks' %}">
+                    ⭐ Bookmarks
+                </a>
+
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <div class="container">
+
+        <a href="{% url 'material_list' %}" class="back-link">
+            ← Back to Materials
+        </a>
+
+
+        <!-- Material Details -->
+
+        <div class="material-card">
+
+            <h1 class="material-title">
+                {{ material.title }}
+            </h1>
+
+            <p class="description">
+                {{ material.description }}
+            </p>
+
+
+            <!-- Material Information -->
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <strong>📚 Subject</strong>
+                    <span>{{ material.subject }}</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>🎓 Semester</strong>
+                    <span>{{ material.get_semester_display }}</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>📁 Resource Type</strong>
+                    <span>{{ material.get_resource_type_display }}</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>👤 Uploaded By</strong>
+                    <span>{{ material.uploaded_by.username }}</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>📅 Uploaded On</strong>
+                    <span>{{ material.uploaded_at|date:"M d, Y" }}</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>📄 File</strong>
+                    <span>{{ material.resource_file.name }}</span>
+                </div>
+
+            </div>
+
+
+            <!-- Action Buttons -->
+
+            <div class="actions">
+
+                <a
+                    href="{{ material.resource_file.url }}"
+                    target="_blank"
+                    class="btn view-btn"
+                >
+                    👁 View Resource
+                </a>
+
+                <a
+                    href="{{ material.resource_file.url }}"
+                    download
+                    class="btn download-btn"
+                >
+                    ⬇ Download
+                </a>
+
+
+                <!-- Bookmark -->
+
+                {% if user.is_authenticated %}
+
+                    {% if is_bookmarked %}
+
+                        <a
+                            href="{% url 'remove_bookmark' material.pk %}"
+                            class="btn bookmark-btn"
+                        >
+                            ⭐ Remove Bookmark
+                        </a>
+
+                    {% else %}
+
+                        <a
+                            href="{% url 'add_bookmark' material.pk %}"
+                            class="btn bookmark-btn"
+                        >
+                            ☆ Save Bookmark
+                        </a>
+
+                    {% endif %}
+
+                {% endif %}
+
+
+                <!-- Owner Actions -->
+
+                {% if user == material.uploaded_by %}
+
+                    <a
+                        href="{% url 'edit_material' material.pk %}"
+                        class="btn edit-btn"
+                    >
+                        ✏ Edit
+                    </a>
+
+                    <a
+                        href="{% url 'delete_material' material.pk %}"
+                        class="btn delete-btn"
+                    >
+                        🗑 Delete
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- Reviews Section -->
+
+        <div class="reviews-section">
+
+            <h2>
+                ⭐ Ratings & Reviews
+            </h2>
+
+            {% if average_rating %}
+    <div class="average-rating">
+        <strong>
+            ⭐ {{ average_rating|floatformat:1 }} / 5
+        </strong>
+
+        <span>
+            Based on {{ reviews|length }} review{{ reviews|length|pluralize }}
+        </span>
+    </div>
+{% else %}
+    <div class="average-rating">
+        <strong>
+            ⭐ No ratings yet
+        </strong>
+    </div>
+{% endif %}
+
+
+            {% if user.is_authenticated %}
+
+                <!-- Add Review Form -->
+
+                <form
+                    method="POST"
+                    action="{% url 'add_review' material.pk %}"
+                    class="review-form"
+                >
+
+                    {% csrf_token %}
+
+                    <div class="form-group">
+
+                        <label for="{{ review_form.rating.id_for_label }}">
+                            Rating
+                        </label>
+
+                        {{ review_form.rating }}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="{{ review_form.comment.id_for_label }}">
+                            Your Review
+                        </label>
+
+                        {{ review_form.comment }}
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="review-btn"
+                    >
+                        ⭐ Submit Review
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <div class="login-message">
+
+                    Please
+                    <a href="{% url 'login' %}">
+                        login
+                    </a>
+                    to leave a review.
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- Existing Reviews -->
+
+            <div class="reviews-list">
+
+                {% if reviews %}
+
+                    {% for review in reviews %}
+
+                        <div class="review-card">
+
+                            <div class="review-header">
+
+                                <strong>
+                                    👤 {{ review.user.username }}
+                                </strong>
+
+
+                                <span class="review-rating">
+
+                                    {% if review.rating == 5 %}
+                                        ⭐⭐⭐⭐⭐
+
+                                    {% elif review.rating == 4 %}
+                                        ⭐⭐⭐⭐
+
+                                    {% elif review.rating == 3 %}
+                                        ⭐⭐⭐
+
+                                    {% elif review.rating == 2 %}
+                                        ⭐⭐
+
+                                    {% else %}
+                                        ⭐
+
+                                    {% endif %}
+
+                                </span>
+
+                            </div>
+
+
+                            {% if review.comment %}
+
+                                <p>
+                                    {{ review.comment }}
+                                </p>
+
+                            {% endif %}
+
+
+                            <small>
+                                {{ review.created_at|date:"M d, Y" }}
+                            </small>
+
+
+                            <!-- Delete Own Review -->
+
+                            {% if user == review.user %}
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'delete_review' review.pk %}"
+                                    style="margin-top: 10px;"
+                                >
+
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="delete-review-btn"
+                                    >
+                                        Delete Review
+                                    </button>
+
+                                </form>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="review-card">
+
+                        <p>
+                            No reviews yet.
+                            Be the first to review this resource! 😊
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

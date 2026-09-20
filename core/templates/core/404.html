@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Page Not Found | EduShare</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .error-card {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        .error-code {
+            font-size: 80px;
+            font-weight: bold;
+            color: #7c3aed;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="error-card">
+
+            <div class="error-icon">
+                🔍
+            </div>
+
+            <div class="error-code">
+                404
+            </div>
+
+            <h1>
+                Page Not Found
+            </h1>
+
+            <p>
+                Sorry, the page you're looking for doesn't exist
+                or may have been moved.
+            </p>
+
+            <a href="{% url 'home' %}" class="btn">
+                🏠 Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
