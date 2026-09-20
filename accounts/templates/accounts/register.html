@@ -15,103 +15,443 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f4f6f8;
+            background: #eef3ff;
+            min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+
+            padding: 20px;
         }
 
-        .register-container {
-            width: 400px;
+        .register-wrapper {
+            width: 850px;
+            max-width: 100%;
+
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 42% 58%;
+
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
         }
 
-        h1 {
+
+        /* =========================
+           LEFT ILLUSTRATION
+        ========================= */
+
+        .illustration {
+            background: linear-gradient(145deg, #2563eb, #4f46e5);
+
+            color: white;
+
+            padding: 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
             text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .illustration::before {
+            content: "";
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 50%;
+
+            top: -70px;
+            left: -80px;
+        }
+
+        .illustration::after {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 50%;
+
+            bottom: -70px;
+            right: -50px;
+        }
+
+        .book {
+            width: 150px;
+            height: 105px;
+
+            position: relative;
+
+            margin-bottom: 25px;
+
+            z-index: 1;
+        }
+
+        .book-left,
+        .book-right {
+            position: absolute;
+
+            width: 75px;
+            height: 95px;
+
+            background: white;
+
+            top: 5px;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-left {
+            left: 0;
+
+            border-radius: 8px 2px 2px 8px;
+
+            transform: rotate(-5deg);
+        }
+
+        .book-right {
+            right: 0;
+
+            border-radius: 2px 8px 8px 2px;
+
+            transform: rotate(5deg);
+        }
+
+        .book-line {
+            position: absolute;
+
+            width: 45px;
+            height: 5px;
+
+            background: #bfdbfe;
+
+            border-radius: 5px;
+
+            left: 15px;
+        }
+
+        .line1 {
+            top: 25px;
+        }
+
+        .line2 {
+            top: 42px;
+        }
+
+        .line3 {
+            top: 59px;
+        }
+
+        .illustration h2 {
+            font-size: 28px;
+
             margin-bottom: 10px;
+
+            z-index: 1;
+        }
+
+        .illustration p {
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            opacity: 0.9;
+
+            max-width: 280px;
+
+            z-index: 1;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-section {
+            padding: 35px 45px;
+        }
+
+        .form-section h1 {
+            color: #111827;
+
+            font-size: 27px;
+
+            margin-bottom: 5px;
         }
 
         .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 25px;
+            color: #6b7280;
+
+            font-size: 14px;
+
+            margin-bottom: 22px;
         }
 
+
+        /* Django form */
+
         form p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
+
+            font-size: 13px;
+
             font-weight: bold;
+
+            color: #374151;
+
+            margin-bottom: 5px;
         }
 
         input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+            padding: 9px 11px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .helptext {
+            display: block;
+
+            font-size: 11px;
+
+            color: #6b7280;
+
+            margin-top: 3px;
+
+            line-height: 1.3;
+        }
+
+        ul.errorlist {
+            color: #dc2626;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+
+            padding-left: 18px;
         }
 
         button {
             width: 100%;
-            padding: 12px;
+
+            padding: 11px;
+
             border: none;
-            border-radius: 5px;
+
+            border-radius: 7px;
+
             background: #2563eb;
+
             color: white;
-            font-size: 16px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
             cursor: pointer;
+
+            margin-top: 5px;
+
+            transition: 0.2s;
         }
 
         button:hover {
             background: #1d4ed8;
+
+            transform: translateY(-1px);
         }
+
+
+        /* =========================
+           LINKS
+        ========================= */
 
         .login-link {
             text-align: center;
-            margin-top: 20px;
+
+            margin-top: 15px;
+
+            font-size: 13px;
+
+            color: #555;
         }
 
         .login-link a {
-            text-decoration: none;
             color: #2563eb;
+
+            text-decoration: none;
+
+            font-weight: bold;
         }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+
+            margin-top: 10px;
+        }
+
+        .back-home a {
+            color: #6b7280;
+
+            text-decoration: none;
+
+            font-size: 12px;
+        }
+
+        .back-home a:hover {
+            color: #2563eb;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .register-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .illustration {
+                display: none;
+            }
+
+            .form-section {
+                padding: 28px 25px;
+            }
+
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="register-container">
+    <div class="register-wrapper">
 
-        <h1>EduShare</h1>
+        <!-- Illustration -->
 
-        <p class="subtitle">
-            Create your student account
-        </p>
+        <div class="illustration">
 
-        <form method="POST">
+            <div class="book">
 
-            {% csrf_token %}
+                <div class="book-left">
+                    <div class="book-line line1"></div>
+                    <div class="book-line line2"></div>
+                    <div class="book-line line3"></div>
+                </div>
 
-            {{ form.as_p }}
+                <div class="book-right">
+                    <div class="book-line line1"></div>
+                    <div class="book-line line2"></div>
+                    <div class="book-line line3"></div>
+                </div>
 
-            <button type="submit">
-                Create Account
-            </button>
+            </div>
 
-        </form>
+            <h2>Join EduShare</h2>
 
-        <div class="login-link">
-            Already have an account?
-            <a href="{% url 'login' %}">
-                Login
-            </a>
+            <p>
+                Learn, share and discover useful
+                educational resources with other
+                students.
+            </p>
+
+        </div>
+
+
+        <!-- Registration Form -->
+
+        <div class="form-section">
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Create your student account
+            </p>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+
+            </div>
+
+
+            <div class="back-home">
+
+                <a href="/">
+                    ← Back to Home
+                </a>
+
+            </div>
+
         </div>
 
     </div>
